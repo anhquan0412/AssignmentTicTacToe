@@ -30,7 +30,11 @@ public class TicTacToeAI {
     public TicTacToeAI() throws Exception
     {       
         welcome();
-        init();
+        System.out.print("Enter the board size: ");
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        sc.close();
+        init(n);
         do
         {
             
@@ -91,15 +95,15 @@ public class TicTacToeAI {
     }
     
     
-    public void init() throws Exception
+    public void init(int n) throws Exception
     {
         playerX='X';
         computerO = 'O';
-        gameBoard  = new Board(3,3);
+        gameBoard  = new Board(n);
         isOver = false;
         whoWin = -1; //0: player win, 1: AI win
         
-        AIcontroller = new Level1AI(gameBoard);
+        AIcontroller = new Level2AI(gameBoard);
         
         
         gameBoard.paint();
